@@ -4,9 +4,36 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node index.js"
+    "start": "npm-run-all -s build start-prod-server",
+    "start-prod-server": "babel-node index.js",
+    "start-dev-server": "nodemon --exec babel-node index.js",
+    "dev-server": "npm-run-all -s build dev-server-start",
+    "build": "webpack --config ./webpack.config.js --mode production",
+    "dev": "webpack-dev-server --config ./webpack.config.js --mode development"
   },
   "keywords": [],
   "author": "Jon Pearman <jpearman@sbgtv.com> (arguablydelicious.com)",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/node": "^7.6.1",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "nodemon": "^1.19.2",
+    "npm-run-all": "^4.1.5",
+    "react-hot-loader": "^4.12.13",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.8",
+    "webpack-dev-server": "^3.8.1"
+  }
 }
