@@ -1,0 +1,12 @@
+{
+  "name": "arguablydelicious",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node index.js"
+  },
+  "keywords": [],
+  "author": "Jon Pearman <jpearman@sbgtv.com> (arguablydelicious.com)",
+  "license": "MIT"
+}
