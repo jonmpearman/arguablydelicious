@@ -7,7 +7,7 @@
     "start": "npm-run-all -s build start-prod-server",
     "start-prod-server": "babel-node index.js",
     "start-dev-server": "nodemon --exec babel-node index.js",
-    "dev-server": "npm-run-all -s build dev-server-start",
+    "dev-server": "npm-run-all -s build start-dev-server",
     "build": "webpack --config ./webpack.config.js --mode production",
     "dev": "webpack-dev-server --config ./webpack.config.js --mode development"
   },
@@ -19,7 +19,9 @@
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
     "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "react-dom": "^16.9.0",
+    "style-loader": "^1.0.0",
+    "npm-run-all": "^4.1.5"
   },
   "devDependencies": {
     "@babel/core": "^7.6.0",
@@ -28,7 +30,10 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.2.0",
+    "file-loader": "^4.2.0",
     "html-webpack-plugin": "^3.2.0",
+    "image-webpack-loader": "^6.0.0",
     "nodemon": "^1.19.2",
     "npm-run-all": "^4.1.5",
     "react-hot-loader": "^4.12.13",

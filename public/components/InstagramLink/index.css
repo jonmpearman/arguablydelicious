@@ -1,0 +1,25 @@
+.instagramContainer {
+    position: absolute;
+    top: 85vh;
+    right: 10vw;
+}
+
+.instagramContainer a {
+    display: flex;
+    text-decoration: none;
+}
+
+.instaHandle {
+    flex: 1;
+    line-height: 30px;
+    font-size: 30px;
+    letter-spacing: 1px;
+    color: #000;
+}
+
+.instaIcon {
+    flex: 1;
+    height: 80px;
+    width: 80px;
+    margin: auto;
+}
