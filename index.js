@@ -1,16 +1,39 @@
 import 'dotenv/config';
 import express from 'express';
 import path from 'path';
-import http from 'http';
 import fs from 'fs';
-import {Transform} from 'stream';
+import request from 'request';
+import sharp from 'sharp';
 
-const app = express();
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'dist')));
+const imageReader = sharp();
 
-(function downloadImageAndSaveToServer() {
+(function () {
+    imageReader
+        .metadata()
+        .then((metadata) => {
+            return imageReader
+                .resize(Math.round(metadata.width / 2))
+                .toBuffer();
+        })
+        .then((data) => {
+            if (!fs.existsSync(path.join(__dirname + '/dist/images'))) {
+                fs.mkdirSync(path.join(__dirname + '/dist/images'));
+            }
+            fs.writeFileSync(path.join(__dirname + '/dist/images/apple_tart.jpg'), data);
+        });
+
+    request
+        .get('http://arguablydelicious.s3.us-east-2.amazonaws.com/images/apple_tart.jpg')
+        .on('error', err => {
+            console.log(err)
+        })
+        .on('end', () => {
+            // console.log('end image request');
+        })
+        .pipe(imageReader);
+})();
+
+function downloadImageAndSaveToServer() {
     var url = 'http://arguablydelicious.s3.us-east-2.amazonaws.com/images/apple_tart.jpg';
 
     http.request(url, function(response) {
@@ -21,18 +44,24 @@ app.use(express.static(path.join(__dirname, 'dist')));
         });
 
         response.on('end', function() {
-            if (!fs.existsSync('./dist/images')) {
-                fs.mkdirSync('./dist/images');
+            if (!fs.existsSync(path.join(__dirname + './dist/images'))) {
+                fs.mkdirSync(path.join(__dirname + './dist/images'));
             }
             fs.writeFileSync('./dist/images/apple_tart.jpg', data.read());
         });
     }).end();
-})();
+};
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname + 'dist/index.html'));
+const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'dist')));
+
+app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/dist/index.html'));
 });
 
 app.listen(process.env.PORT, () => {
     console.log(`Listening on port ${process.env.PORT}!`);
+    console.log(`dir name ${__dirname}`);
 });

@@ -6,7 +6,7 @@ const title = 'Arguably Delicious';
 export default (props) => {
     return (<div className={'instagramContainer'}>
                 <a href={'https://www.instagram.com/arguablydelicious/'}>
-                    <img className={'instaIcon'} src={'https://drive.google.com/uc?id=1ID2JLo0oUJxzo42yUIyG-ItBVuB4wkhQ'}/>
+                    <img className={'instaIcon'} src={'http://arguablydelicious.s3.us-east-2.amazonaws.com/images/instagram.svg'}/>
                     <div className={'instaHandle'}>{title}</div>
                 </a>
             </div>);

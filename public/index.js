@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import InstagramLink from './components/InstagramLink';
+import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import Home from './pages/Home';
+import CreatePost from './pages/CreatePost';
 import './index.css';
 
 export default class App extends Component {
@@ -9,15 +11,16 @@ export default class App extends Component {
     }
 
     render() {
-        return (<div style={{backgroundImage: "url('./images/apple_tart.jpg')"}} className={'pageContainer'}>
-                <div>{this.props.children}</div>
-            </div>);
+        return (
+            <BrowserRouter>
+                <Route exact path='/' component={Home} />
+                <Route path='/create-post' component={CreatePost} />
+            </BrowserRouter>
+        );
     }
 }
 
 
-ReactDOM.render(<App>
-                    <InstagramLink />
-                </App>, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('app'));
 
 module.hot.accept();

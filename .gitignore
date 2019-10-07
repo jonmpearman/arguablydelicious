@@ -7,3 +7,13 @@ dist/
 .DS_Store
 
 npm-debug.log*
+
+*.pem
+*.zip
+.ebignore
+00_change_npm_permissions.config
+# Elastic Beanstalk Files
+.elasticbeanstalk
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

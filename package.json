@@ -7,9 +7,9 @@
     "start": "npm-run-all -s build start-prod-server",
     "start-prod-server": "babel-node index.js",
     "start-dev-server": "nodemon --exec babel-node index.js",
-    "dev-server": "npm-run-all -s build start-dev-server",
+    "start-dev": "npm-run-all -s build start-dev-server",
     "build": "webpack --config ./webpack.config.js --mode production",
-    "dev": "webpack-dev-server --config ./webpack.config.js --mode development"
+    "webpack-dev": "webpack-dev-server --config ./webpack.config.js --mode development"
   },
   "keywords": [],
   "author": "Jon Pearman <jpearman@sbgtv.com> (arguablydelicious.com)",
@@ -21,6 +21,9 @@
     "npm-run-all": "^4.1.5",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-router-dom": "^5.1.2",
+    "request": "^2.88.0",
+    "sharp": "^0.23.0",
     "style-loader": "^1.0.0"
   },
   "devDependencies": {
@@ -34,7 +37,6 @@
     "html-webpack-plugin": "^3.2.0",
     "image-webpack-loader": "^6.0.0",
     "nodemon": "^1.19.2",
-    "npm-run-all": "^4.1.5",
     "react-hot-loader": "^4.12.13",
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.8",
