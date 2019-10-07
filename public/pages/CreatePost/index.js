@@ -17,16 +17,10 @@ export default class CreatePost extends Component {
         });
     }
 
-    handleChange(event) {
-        this.setState({
-            value: event.target.value
-        });
-    }
-
     render() {
         return (<form onSubmit={this.handleSubmit}>
-            <label>Enter a title...</label>
-            <input type='text' name='title' ref={(el) => this.title = el} />
+            <label className='label labelTitle'>Enter a title...</label>
+            <input className='input inputTitle' type='text' name='title' ref={(el) => this.title = el} />
             <div>{this.state.value}</div>
         </form>);
     }
